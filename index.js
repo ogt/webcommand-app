@@ -11,7 +11,7 @@ function createCmdServer(cmd) {
         proc = child(spawn(cmd, args));
     req.pipe(proc)
        .pipe(res);
-    console.log('Executing : "'+cmd+' '+args.join(' ') + '"');
+    console.log('Executing',cmd,args);
   });
   
 }
