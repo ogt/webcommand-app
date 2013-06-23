@@ -6,7 +6,15 @@ Essentially it is a web server which for every requests spawns a process that ex
 feeding the request's POST input stream to the standard input of that process and taking the standard output of the process and making it the POST request's result stream.
 The request's path is used to extract an "args" parameter which is assumed to be a multi-value parameter, so we map its values into the sort program's argument list. 
 
-For example you can use the service using curl as follows:
+The code is very simple (its in `index.js`) just 4 lines are enough to do all that:
+
+    var args = parse(req.url,true, true).query.args,
+    proc = child(spawn(cmd, args));
+    req.pipe(proc)
+      .pipe(res);
+
+
+You can use the service using curl as follows:
 ```
 >curl --data-binary @- "http://sorter.herokuapp.com/?args=-t&args=,&args=-k&args=3&args=-n"
 boo,*,23
