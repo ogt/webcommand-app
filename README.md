@@ -1,4 +1,4 @@
-Unix sort command exposed as a web service
+Unix sort as a web service
 --
 
 This web service exposes the unix sort command functionality.
