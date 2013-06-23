@@ -23,20 +23,7 @@ th, td {
 $(function () {
     $('body').append($('<a href="https://github.com/ogt/sorter"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>'));
     $('body').append($('<h3>Unix sort as a web service</h3>'));
-    $('body').append($('<p>Use it with:</p>'));
-    var code = 
-      '>curl --data-binary @- "http://sorter.herokuapp.com/?args=-t&args=,&args=-k&args=3&args=-n"\n'+
-      'boo,*,23\n'+
-      'foo,*,32\n'+
-      'poo,*,3\n'+
-      'doo,*,2\n'+
-      '^D\n'+
-      'doo,*,2\n'+
-      'poo,*,3\n'+
-      'boo,*,23\n'+
-      'foo,*,32\n'+
-      '>\n';
-    $('body').append($('<pre>'+code+'</pre>'));
+    $('body').append($('<a href="https://github.com/ogt/sorter">Check out the project home for details</p>'));
 })
 </script>
 </body>
