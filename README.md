@@ -1,7 +1,12 @@
 Unix sort as a web service
---
+=====
+
+## Synopsis
 
 This web service exposes the unix sort command functionality.
+
+## Description
+
 Essentially it is a web server which for every requests spawns a process that executes the unix `sort (1)` command
 feeding the request's POST input stream to the standard input of that process and taking the standard output of the process and making it the POST request's result stream.
 The request's path is used to extract an "args" parameter which is assumed to be a multi-value parameter, so we map its values into the sort program's argument list. 
@@ -30,4 +35,22 @@ foo,*,32
 ```
 This simple facility is run as a free heroku app - this means that occassionally you may hit a 20 seconds delay - if there has been no activity for a while.
 This also means that the resources available aren't much - if you run sort with large inputs - you will probably run the server out of memory and you will make the server unavailable for others. So I would appreciate if you make light use only for the service
+
+## Installation
+
+To run locally:
+
+    > hub clone ogt/sorter && cd sorter
+    > npm install
+    > node index.js
+
+To run at heroku:
+
+    > hub clone ogt/sorter && cd sorter
+    > npm install
+    > heroku login
+    > heroku apps:create mysorter
+    > git push heroku master
+    > heroku ps:scale web=1
+    > open mysorter.herokuapp.com
 
