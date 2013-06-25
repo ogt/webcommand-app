@@ -3,7 +3,7 @@ Unix sort as a web service
 
 ## Synopsis
 
-This web service exposes the unix sort command functionality.
+This web service exposes the default unix sort command functionality as it is available at the server that runs the http server.
 
 ## Description
 
