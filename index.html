@@ -1,7 +1,11 @@
 <html>
 <head>
-    <title>nodesk</title>
+    <title>sorter</title>
     <style>
+        .arguments {
+            width: 100%;
+            height: 100%;
+        }
         .fill {
             width: 100%;
             height: 100%;
@@ -22,25 +26,25 @@
         <tr>
             <td style="width: 50%">
                 <table class="fill">
-                    <tr>
+                    <tr style="height: 10%">
                         <td>
-                            <label for="output">script</label>
-                            <button class="go" id="btnSubmit">run &gt;</button>
-                            <textarea id="code" class="code fill">
+                            <label for="arguments">script</label>
+                            <button class="go" id="btnSubmit">Execute Command &gt;</button>
+                            <textarea id="arguments" class="arguments" >-t , -k 3 -n -r  </textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="10px;">&nbsp;</td>
+                    </tr>
+                    <tr style="height: 90%">
+                        <td>
+                            <label for="input">input</label><br>
+                            <textarea id="input" class="input fill">
 boo,*,23
 foo,*,32
 poo,*,3
 doo,*,2
                             </textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="30px;">&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="input">input</label><br>
-                            <textarea id="input" class="input fill" >-t , -k 3 -n -r  </textarea>
                         </td>
                     </tr>
                 </table>
@@ -72,12 +76,13 @@ doo,*,2
         });
         $('#btnSubmit').click(function () {
             $.ajax({
-                url: "index.html?args=" + $('#input').val()  ,
-                type: 'POST',
-                data: $('#code').val()
-            }
-                ).done(function (data) {
-                    $('#output').val((data));
+              url: "http://localhost:8000/?args=" + $('#arguments').val()  ,
+              type: 'POST',
+              data: $('#input').val()
+            }).done(function (data) { 
+              $('#output').val((data));
+            }).fail(function (arg1, arg2) { 
+              alert(JSON.stringify(arg1));
             });
             return false;
         });

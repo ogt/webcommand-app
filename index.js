@@ -7,12 +7,12 @@ var createServer = require('http').createServer,
 var port = process.env.PORT || 8000;
 
 function createCmdServer(cmd) {
-    return createServer(function (req, res) {
-      if (req.method == 'POST') {
+  return createServer(function (req, res) {
+    if (req.method == 'POST') {
       var args = parse(req.url,true, true).query.args.split(' '),
-	  proc = child(spawn(cmd, args));
+          proc = child(spawn(cmd, args));
       req.pipe(proc)
-	 .pipe(res);
+         .pipe(res);
       console.log('Executing',cmd,args);
     }
     else // GET
