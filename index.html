@@ -76,7 +76,7 @@ doo,*,2
         });
         $('#btnSubmit').click(function () {
             $.ajax({
-              url: "http://localhost:8000/?args=" + $('#arguments').val()  ,
+              url: "/?args=" + $('#arguments').val()  ,
               type: 'POST',
               data: $('#input').val()
             }).done(function (data) { 
