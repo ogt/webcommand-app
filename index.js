@@ -1,24 +1,29 @@
-var createServer = require('http').createServer,
-    parse = require('url').parse,
-    createReadStream = require('fs').createReadStream,
-    spawn = require('child_process').spawn,
-    child = require('event-stream').child;
+var express = require('express'),
+    webCommand = require('webcommand')(),
+    stream = require('event-stream');
 
 var port = process.env.PORT || 8000;
+var app = express();
 
-function createCmdServer(cmd) {
-  return createServer(function (req, res) {
-    if (req.method == 'POST') {
-      var args = parse(req.url,true, true).query.args.split(' '),
-          proc = child(spawn(cmd, args));
-      req.pipe(proc)
-         .pipe(res);
-      console.log('Executing',cmd,args);
-    }
-    else // GET
-      createReadStream('./index.html').pipe(res);
-  });
-}
+app.get('/getCommands', function(req,res) {
+    res.send(JSON.stringify(webCommand.getCommandList()));
+});
 
-createCmdServer('sort').listen(port);
-console.log('Server running at http://localhost:'+port+'/');
+app.get('/', function(req,res) {
+    res.sendfile('index.html');
+});
+
+app.post('/*', function(req,res){
+    var cmd = req.path.replace('/',''),
+        args = [].concat(req.query.args),
+        cStream= stream.through();
+    if (req.query.args === '') args = null;
+
+    cStream.on('error', function(err) {
+        console.error(err);
+    });
+    webCommand.webCommand(cmd,args, req, res, cStream);
+});
+
+app.listen(port);
+console.log('Listening on port: '+port);

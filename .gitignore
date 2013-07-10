@@ -1,0 +1,8 @@
+/.*
+/*.log
+!/.coverignore
+!/.gitignore
+!/.jshintrc
+!/.travis.yml
+/*.exe
+/*.project

@@ -1,9 +1,0 @@
-_netstatistics:*:228:228:Network Statistics Daemon:/var/empty:/usr/bin/false
-_krb_kerberos:*:233:-2:Open Directory Kerberos:/var/empty:/usr/bin/false
-_krb_anonymous:*:234:-2:Open Directory Kerberos Anonymous:/var/empty:/usr/bin/false
-_pcastlibrary:*:225:225:Podcast Library Server:/Library/Server/PodcastLibrary:/usr/bin/false
-_dovenull:*:227:227:Dovecot Authentication:/var/empty:/usr/bin/false
-_avbdeviced:*:229:-2:Ethernet AVB Device Daemon:/var/empty:/usr/bin/false
-_krb_krbtgt:*:230:-2:Open Directory Kerberos Ticket Granting Ticket:/var/empty:/usr/bin/false
-_krb_kadmin:*:231:-2:Open Directory Kerberos Admin Service:/var/empty:/usr/bin/false
-_krb_changepw:*:232:-2:Open Directory Kerberos Change Password Service:/var/empty:/usr/bin/false

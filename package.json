@@ -1,19 +1,21 @@
 {
-  "name": "sorter",
-  "description": "Unix sort cmd exposed as a web service",
-  "version": "0.0.0",
+  "name": "webcommand-app",
+  "description": "Web application that exposes unix commands as web services",
+  "version": "0.0.1",
   "repository": {
-    "url": "git://github.com/ogt/sorter.git"
+    "url": "git://github.com/ogt/webcommand-app.git"
   },
   "main": "index.js",
   "scripts": {
-    "test": "tap test/*.js"
+    "test": "make test"
   },
   "dependencies": {
-    "event-stream": "*",
-    "url" : "*"
+    "webcommand": "*",
+    "express": "~3.3.4",
+    "event-stream": "~3.0.15"
   },
   "devDependencies": {
-    "tap": "~0.2.5"
+    "tap": "~0.4.3",
+    "jshint": "~2.1.4"
   }
 }
