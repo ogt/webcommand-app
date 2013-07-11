@@ -17,7 +17,7 @@ app.post('/*', function(req,res){
     var cmd = req.path.replace('/',''),
         args = [].concat(req.query.args),
         cStream= stream.through();
-    if (req.query.args === '') args = null;
+    if (!req.query.args) args = null;
 
     cStream.on('error', function(err) {
         console.error(err);
