@@ -1,5 +1,5 @@
 var express = require('express'),
-    webCommand = require('webcommand')(),
+    webCommand = require('webcommand')(require('./commands')),
     stream = require('event-stream');
 
 var port = process.env.PORT || 8000;
@@ -10,6 +10,7 @@ app.get('/getCommands', function(req,res) {
 });
 
 app.get('/', function(req,res) {
+    console.log(req.host);
     res.sendfile('index.html');
 });
 
