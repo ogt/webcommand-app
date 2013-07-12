@@ -13,7 +13,13 @@ app.get('/', function(req,res) {
     res.sendfile('index.html');
 });
 
+app.get('/test', function(req,res) {
+    res.sendfile('test.html');
+});
+
+
 app.post('/*', function(req,res){
+	console.log('POST');
     var cmd = req.path.replace('/',''),
         args = [].concat(req.query.args),
         cStream= stream.through();
@@ -22,6 +28,10 @@ app.post('/*', function(req,res){
     cStream.on('error', function(err) {
         console.error(err);
     });
+    if(req.query.pipes){
+    	console.log('We got pipes to handle');
+    	console.log(req.query.pipes);
+    }
     webCommand.webCommand(cmd,args, req, res, cStream);
 });
 
