@@ -28,7 +28,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script>
        	$('#btnSubmit').click(function () {
-       		var pipes=['http://127.0.0.1:8000/?grep?args=^love', 'http://127.0.0.1:8000/?sort?args=-r']
+       		var pipes=['http://127.0.0.1:8000/grep?args=^love', 'http://127.0.0.1:8000/sort?args=-r']
             //var args = $('#arguments').val().split('\n');
             $.ajax({
               url: '/cat?args=words.txt&pipes='+ JSON.stringify(pipes) ,

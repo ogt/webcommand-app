@@ -1,6 +1,7 @@
 var express = require('express'),
     webCommand = require('webcommand')(),
     stream = require('event-stream');
+var request = require('request');
 
 var port = process.env.PORT || 8000;
 var app = express();
@@ -31,8 +32,20 @@ app.post('/*', function(req,res){
     if(req.query.pipes){
     	console.log('We got pipes to handle');
     	console.log(req.query.pipes);
+    	var pipes= JSON.parse(req.query.pipes);
+    	var curPipe=pipes.shift();
+    	var urlPipes='';
+    	if(pipes.length){
+    		urlPipes= '&pipes='+JSON.stringify(pipes);
+    		console.log(urlPipes);
+    	}
+    	var iStream= stream.through();
+    	iStream.pipe(request.post(curPipe+urlPipes)).pipe(res);
+    	webCommand.webCommand(cmd,args, req, iStream, cStream);
+    	console.log('curPipe:'+ curPipe);
+    }else{
+    	webCommand.webCommand(cmd,args, req, res, cStream);
     }
-    webCommand.webCommand(cmd,args, req, res, cStream);
 });
 
 app.listen(port);
