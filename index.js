@@ -18,9 +18,7 @@ app.get('/test', function(req,res) {
     res.sendfile('test.html');
 });
 
-
 app.post('/*', function(req,res){
-	console.log('POST');
     var cmd = req.path.replace('/',''),
         args = [].concat(req.query.args),
         cStream= stream.through();
@@ -30,19 +28,15 @@ app.post('/*', function(req,res){
         console.error(err);
     });
     if(req.query.pipes){
-    	console.log('We got pipes to handle');
-    	console.log(req.query.pipes);
     	var pipes= JSON.parse(req.query.pipes);
     	var curPipe=pipes.shift();
     	var urlPipes='';
     	if(pipes.length){
     		urlPipes= '&pipes='+JSON.stringify(pipes);
-    		console.log(urlPipes);
     	}
     	var iStream= stream.through();
     	iStream.pipe(request.post(curPipe+urlPipes)).pipe(res);
     	webCommand.webCommand(cmd,args, req, iStream, cStream);
-    	console.log('curPipe:'+ curPipe);
     }else{
     	webCommand.webCommand(cmd,args, req, res, cStream);
     }
