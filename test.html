@@ -29,9 +29,9 @@
     <script>
        	$('#btnSubmit').click(function () {
        		var pipes=['http://127.0.0.1:8000/grep?args=^love', 'http://127.0.0.1:8000/sort?args=-r']
-            //var args = $('#arguments').val().split('\n');
+            pipes=pipes.map(function(pipe){return encodeURIComponent(pipe);})
             $.ajax({
-              url: '/cat?args=words.txt&pipes='+ JSON.stringify(pipes) ,
+              url: '/cat?args=words.txt&pipes='+ pipes.join('&pipes=') ,
               type: 'POST'
               //,data: $('#input').val()
             }).done(function (data) { 

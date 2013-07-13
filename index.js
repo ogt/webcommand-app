@@ -28,11 +28,21 @@ app.post('/*', function(req,res){
         console.error(err);
     });
     if(req.query.pipes){
-    	var pipes= JSON.parse(req.query.pipes);
-    	var curPipe=pipes.shift();
+    	var pipes=[];
+    	if(typeof (req.query.pipes)!=='string'){
+    		pipes=  req.query.pipes;
+    		var curPipe=decodeURIComponent(pipes.shift());
+    	}else{
+    		curPipe=decodeURIComponent(req.query.pipes);
+    	}
     	var urlPipes='';
     	if(pipes.length){
-    		urlPipes= '&pipes='+JSON.stringify(pipes);
+    		//if first arg in query string use ?
+    		if(curPipe.indexOf('?')===-1){
+    			urlPipes= '?pipes='+pipes.map(function(pipe){return encodeURIComponent(pipe)}).join('&pipes=');
+    		}else{
+    			urlPipes= '&pipes='+pipes.map(function(pipe){return encodeURIComponent(pipe)}).join('&pipes=');
+    		}
     	}
     	var iStream= stream.through();
     	iStream.pipe(request.post(curPipe+urlPipes)).pipe(res);
