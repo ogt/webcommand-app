@@ -1,8 +1,8 @@
 TAP=node_modules/.bin/tap
 LINT=node_modules/.bin/jshint
-CREATE=bin/createapps.sh
-DEPLOY=bin/deployapps.sh
-REFRESH=bin/refreshbranches.sh
+CREATE=scripts/createapps.sh
+DEPLOY=scripts/deployapps.sh
+REFRESH=scripts/refreshbranches.sh
 BRANCHES= webcommand-app seder awker sorter
 
 create:
