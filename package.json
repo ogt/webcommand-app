@@ -12,7 +12,8 @@
   "dependencies": {
     "webcommand": "*",
     "express": "~3.3.4",
-    "event-stream": "~3.0.15"
+    "event-stream": "~3.0.15",
+    "cors": "~1.0.1"
   },
   "devDependencies": {
     "tap": "~0.4.3",

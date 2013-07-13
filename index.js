@@ -1,11 +1,12 @@
 var express = require('express'),
+    cors = require('cors'),
     webCommand = require('webcommand')(require('./commands')),
     stream = require('event-stream');
 
 var port = process.env.PORT || 8000;
 var app = express();
-
-app.get('/getCommands', function(req,res) {
+app.use(cors());
+app.get('/getCommands', cors(), function(req,res) {
     res.send(JSON.stringify(webCommand.getCommandList()));
 });
 
