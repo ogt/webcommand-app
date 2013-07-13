@@ -1,4 +1,4 @@
-for b in 'webcommand-app' 'sorter' 'awker' 'seder'
+for b in "$@"
 do
     git checkout $b
     git push -f $b $b:master
