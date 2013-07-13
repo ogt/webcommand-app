@@ -1,5 +1,5 @@
 for b in 'webcommand-app' 'sorter' 'awker' 'seder'
 do
     git checkout $b
-    git push $b $b:master
+    git push -f $b $b:master
 done
