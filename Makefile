@@ -1,5 +1,7 @@
 TAP=node_modules/.bin/tap
 LINT=node_modules/.bin/jshint
+REFRESH=bin/refreshbranches.sh
+DEPLOY=bin/deploybranches.sh
 
 refresh:
 	$(REFRESH)
@@ -13,4 +15,4 @@ test:   lint
 lint:
 	$(LINT) index.js
 	$(LINT) test/*.js
-  
+
