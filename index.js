@@ -42,11 +42,9 @@ app.post('/*', function(req,res){
         var urlPipes='';
         if(pipes.length){
             //if first arg in query string use ?
-            if(curPipe.indexOf('?')===-1){
-                urlPipes= '?pipes='+pipes.map(function(pipe){return encodeURIComponent(pipe);}).join('&pipes=');
-            }else{
-                urlPipes= '&pipes='+pipes.map(function(pipe){return encodeURIComponent(pipe);}).join('&pipes=');
-            }
+            if(curPipe.indexOf('?')===-1) urlPipes= '?'
+            else urlPipes= '&';
+            urlPipes = urlPipes +pipes.map(function(pipe){return 'pipes='+encodeURIComponent(pipe);}).join('&');
         }
         var iStream= stream.through();
         iStream.pipe(request.post(curPipe+urlPipes)).pipe(res);
