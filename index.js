@@ -30,27 +30,29 @@ app.post('/*', function(req,res){
         console.error(err);
     });
     if(req.query.pipes){
-    	var pipes=[];
-    	if(typeof (req.query.pipes)!=='string'){
-    		pipes=  req.query.pipes;
-    		var curPipe=decodeURIComponent(pipes.shift());
-    	}else{
-    		curPipe=decodeURIComponent(req.query.pipes);
-    	}
-    	var urlPipes='';
-    	if(pipes.length){
-    		//if first arg in query string use ?
-    		if(curPipe.indexOf('?')===-1){
-    			urlPipes= '?pipes='+pipes.map(function(pipe){return encodeURIComponent(pipe)}).join('&pipes=');
-    		}else{
-    			urlPipes= '&pipes='+pipes.map(function(pipe){return encodeURIComponent(pipe)}).join('&pipes=');
-    		}
-    	}
-    	var iStream= stream.through();
-    	iStream.pipe(request.post(curPipe+urlPipes)).pipe(res);
-    	webCommand.webCommand(cmd,args, req, iStream, cStream);
+        var pipes=[],
+            curPipe;
+        
+        if(typeof (req.query.pipes)!=='string'){
+            pipes=  req.query.pipes;
+            curPipe=decodeURIComponent(pipes.shift());
+        }else{
+            curPipe=decodeURIComponent(req.query.pipes);
+        }
+        var urlPipes='';
+        if(pipes.length){
+            //if first arg in query string use ?
+            if(curPipe.indexOf('?')===-1){
+                urlPipes= '?pipes='+pipes.map(function(pipe){return encodeURIComponent(pipe);}).join('&pipes=');
+            }else{
+                urlPipes= '&pipes='+pipes.map(function(pipe){return encodeURIComponent(pipe);}).join('&pipes=');
+            }
+        }
+        var iStream= stream.through();
+        iStream.pipe(request.post(curPipe+urlPipes)).pipe(res);
+        webCommand.webCommand(cmd,args, req, iStream, cStream);
     }else{
-    	webCommand.webCommand(cmd,args, req, res, cStream);
+        webCommand.webCommand(cmd,args, req, res, cStream);
     }
 });
 
