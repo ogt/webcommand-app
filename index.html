@@ -129,7 +129,6 @@
                 args=$('#arguments_'+num).val().split('\n');
                 pipes='&pipes='+encodeURIComponent(command+args.map(function(a) { return 'args='+a;}).join('&'))+pipes;
                 num--; 
-                alert(pipes);
             }
                 
             //command
