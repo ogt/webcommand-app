@@ -1,1 +1,1 @@
-cat test/input.txt| curl --silent --data-binary @- "http://webcommand-app.herokuapp.com/sort" |cmp --quiet test/sorted.txt
+cat test/input.txt| curl --silent --data-binary @- "http://localhost:$PORT/sort" |cmp --quiet test/sorted.txt

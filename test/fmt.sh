@@ -1,1 +1,1 @@
-cat test/input.txt| curl --silent --data-binary @- "http://webcommand-app.herokuapp.com/fmt"|cmp --quiet test/fmted.txt
+cat test/input.txt| curl --silent --data-binary @- "http://localhost:$PORT/fmt"|cmp --quiet test/fmted.txt
