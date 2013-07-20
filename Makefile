@@ -18,10 +18,9 @@ refresh:
 deploy:   refresh
 	$(DEPLOY) $(BRANCHES)
 
-test:   lint
-	$(TAP) test/*.js
+test:   lint 
+	set -e; for f in test/*.sh ; do echo executing $$f; $$f ; done
 
 lint:
 	$(LINT) index.js
-	$(LINT) test/*.js
 
