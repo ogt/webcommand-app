@@ -1,6 +1,8 @@
 Unix sort as a web service
 =====
 
+[![Build Status](https://travis-ci.org/ogt/webcommand-app.png)](https://travis-ci.org/ogt/webcommand-app)
+
 ## Synopsis
 
 This web service exposes a few popular unix commands as web services. 
