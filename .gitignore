@@ -5,6 +5,7 @@
 !/.gitignore
 !/.jshintrc
 !/.travis.yml
+!.bin
 /*.exe
 /*.project
 
