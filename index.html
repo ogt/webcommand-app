@@ -97,8 +97,6 @@
             $.ajax({
                 url: '/getCommands',
             }).done(function (data) {
-                console.log(data);
-                console.log(JSON.parse(data).sort());
                 webcommand.commands=JSON.parse(data).sort();
                 if(webcommand.commands.length===1){
                     $('#cmd_holder_1').append('<input id="cmd_1" name="cmd_1" class="arguments" type="text" disabled="true" value="'+webcommand.commands[0]+'" >');
