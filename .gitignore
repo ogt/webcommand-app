@@ -1,6 +1,6 @@
 .*
 *.swp
-/*.log
+*.log
 !/.coverignore
 !/.gitignore
 !/.jshintrc

@@ -19,10 +19,9 @@ deploy:   refresh
 	$(DEPLOY) $(BRANCHES)
 
 test:   lint 
-	test/setup.sh; export PORT=`cat test/.process.port`; \
-        for f in test/*.sh ; do echo executing $$f; tap $$f ; done;\
-	test/teardown.sh
+	$(TAP) test/*.js
 
 lint:
 	$(LINT) index.js
+	$(LINT) test/*.js
 

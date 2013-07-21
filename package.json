@@ -15,6 +15,10 @@
   "devDependencies": {
     "tap": "~0.4.3",
     "jshint": "~2.1.4",
-    "getport": "~0.1.0"
+    "getport": "~0.1.0",
+    "request": "~2.22.0",
+    "webcommand-express": "~1.0.4",
+    "filed": "~0.1.0",
+    "webcommand": "~1.0.9"
   }
 }
