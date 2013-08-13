@@ -1,4 +1,4 @@
-An Express Server that supports the webcommand protocol
+Express Server supporting the webcommand protocol
 ==
 [![Build Status](https://travis-ci.org/ogt/webcommand-express.png)](https://travis-ci.org/ogt/webcommand-express)
 
